@@ -1,6 +1,9 @@
 pipeline {
     agent any
 
+tools {
+        maven 'Maven 3' // Maven tool name defined in Jenkins
+    }
     stages {
         stage('Clone Repository') {
             steps {
@@ -10,13 +13,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'maven clean install'
+                bat 'mvn clean install'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'maven test'
+                bat 'mvn test'
             }
         }
 
